@@ -34,7 +34,7 @@ namespace Microsoft.AspNet.OData.Test
             IEnumerable<Order> orders = await ReadEntitiesFromResponse<Order>(response);
             foreach (Order order in orders)
             {
-                Assert.Equal("10.00", order.TotalPrice.ToString(CultureInfo.InvariantCulture));
+                ////Assert.Equal("10.00", order.TotalPrice.ToString(CultureInfo.InvariantCulture));
             }
         }
 
@@ -62,6 +62,7 @@ namespace Microsoft.AspNet.OData.Test
         async Task<IEnumerable<T>> ReadEntitiesFromResponse<T>(HttpResponseMessage httpResponseMessage) where T : class
         {
             string jsonContent = await httpResponseMessage.Content.ReadAsStringAsync();
+            Assert.Contains("\"TotalPrice\":10.00", jsonContent);
             return JsonConvert.DeserializeObject<ODataResponse<T>>(jsonContent).Value;
         }
     }
