@@ -73,6 +73,7 @@ namespace Microsoft.Test.E2E.AspNet.OData.ODataPathHandler
         public async Task CRUDEntitySetShouldWork()
         {
             var rand = new Random(RandomSeedGenerator.GetRandomSeed());
+            System.Diagnostics.Trace.WriteLine("gdebruin");
             var entitySetName = "UnicodeRouteTests_Todoü";
             var uri = new Uri(this.BaseAddress + "/odataü");
             var context = new DataServiceContext(uri, ODataProtocolVersion.V4);
