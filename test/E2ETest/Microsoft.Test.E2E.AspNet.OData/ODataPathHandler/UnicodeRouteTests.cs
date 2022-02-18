@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.OData.Client;
@@ -72,8 +73,9 @@ namespace Microsoft.Test.E2E.AspNet.OData.ODataPathHandler
         [Fact]
         public async Task CRUDEntitySetShouldWork()
         {
-            var rand = new Random(RandomSeedGenerator.GetRandomSeed());
-            System.Diagnostics.Trace.WriteLine("gdebruin");
+            var seed = RandomSeedGenerator.GetRandomSeed();
+            var rand = new Random(seed);
+            Trace.WriteLine($"Generated seed for random number generator: {seed}");
             var entitySetName = "UnicodeRouteTests_Todoü";
             var uri = new Uri(this.BaseAddress + "/odataü");
             var context = new DataServiceContext(uri, ODataProtocolVersion.V4);

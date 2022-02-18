@@ -46,6 +46,7 @@ namespace Microsoft.Test.E2E.AspNet.OData.Common.Instancing
 
             // Keep the randomness per hour instead of per day.
             DateTime now = DateTime.UtcNow;
+            now = new DateTime(637806348000000000);
             int seed = (now.Year * 10000) + (now.Month * 100) + now.Day + now.Hour;
             return seed;
         }
